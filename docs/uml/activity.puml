@@ -1,0 +1,23 @@
+@startuml
+start
+:User accesses Login Screen;
+:Enter Username and Password;
+:Click "Do It";
+if (Authentication Valid?) then (yes)
+  :Display Search/Add Dashboard;
+  split
+    :Enter Color in "Color To Search For";
+    :Click "Search Color";
+    :Display Search Result (e.g., "Purple");
+  split again
+    :Enter Color in "Color To Add";
+    :Click "Add Color";
+    :Display "Color has been added";
+  end split
+  :User clicks "Log Out";
+else (no)
+  :Show "User/Password combination incorrect" error;
+  stop
+endif
+stop
+@enduml
