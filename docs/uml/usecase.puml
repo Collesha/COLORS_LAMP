@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+actor "User" as user
+
+rectangle "COP 4331 LAMP Stack App" {
+  usecase "Login" as UC_Login
+  usecase "Search for Color" as UC_Search
+  usecase "Add New Color" as UC_Add
+  usecase "Logout" as UC_Logout
+  
+  (UC_Search) ..> (UC_Login) : <<include>>
+  (UC_Add) ..> (UC_Login) : <<include>>
+}
+
+user --> UC_Login
+user --> UC_Search
+user --> UC_Add
+user --> UC_Logout
+@enduml
