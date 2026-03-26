@@ -1,0 +1,71 @@
+@startuml
+package "Frontend (public/)" {
+    class "index.html (Login)" as LoginUI {
+        +id="loginName"
+        +id="loginPassword"
+        +id="loginButton" (onclick="doLogin()")
+    }
+    class "color.html (Dashboard)" as ColorUI {
+        +id="searchText"
+        +id="searchColorButton" (onclick="searchColor()")
+        +id="colorText"
+        +id="addColorButton" (onclick="addColor()")
+        +id="logoutButton" (onclick="doLogout()")
+    }
+    class "code.js" as Controller {
+        +userId
+        +doLogin()
+        +doLogout()
+        +addColor()
+        +searchColor()
+        +saveCookie()
+        +readCookie()
+    }
+    class "md5.js" as Crypto {
+        +md5(string)
+    }
+}
+
+package "Backend (LAMPAPI/)" {
+    class "Login.php" as LoginAPI {
+        +getRequestInfo()
+        +returnWithInfo()
+    }
+    class "SearchColors.php" as SearchAPI {
+        +getRequestInfo()
+        +returnWithInfo()
+    }
+    class "AddColor.php" as AddAPI {
+        +getRequestInfo()
+        +returnWithError()
+    }
+}
+
+database "MySQL (COP4331)" {
+    entity "Users" {
+        *ID
+        --
+        Login
+        Password
+        FirstName
+        LastName
+    }
+    entity "Colors" {
+        *ID
+        --
+        Name
+        UserID
+    }
+}
+
+LoginUI ..> Controller : triggers
+ColorUI ..> Controller : triggers
+Controller ..> Crypto : uses
+Controller --> LoginAPI : fetch (Login.php)
+Controller --> SearchAPI : fetch (SearchColors.php)
+Controller --> AddAPI : fetch (AddColor.php)
+LoginAPI --> Users : SELECT
+SearchAPI --> Colors : SELECT
+AddAPI --> Colors : INSERT
+Users "1" -- "0..*" Colors : owns
+@enduml
