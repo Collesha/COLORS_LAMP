@@ -23,3 +23,5 @@ composer.phar
 
 # Sensitive LAMP files
 config.php
+
+node_modules/

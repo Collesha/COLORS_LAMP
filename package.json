@@ -1,0 +1,30 @@
+{
+  "name": "colorsp_lamp",
+  "version": "1.0.0",
+  "description": "The COLORS application is a personal contact and color management system built on the LAMP stack.It allows users to register accounts, log in securely, and manage a personalized list of color entries through a dynamic web interface.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Collesha/COLORS_LAMP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Collesha/COLORS_LAMP/issues"
+  },
+  "homepage": "https://github.com/Collesha/COLORS_LAMP#readme",
+  "devDependencies": {
+    "eslint": "^10.2.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
