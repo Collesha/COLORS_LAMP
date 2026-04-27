@@ -1,3 +1,4 @@
+/* exported doLogin, doLogout, addColor, searchColor */
 const urlBase = 'http://COP4331-5.com/LAMPAPI';
 const extension = 'php';
 
@@ -183,7 +184,9 @@ function searchColor()
 	}
 	
 }
+/* eslint-disable no-undef */
 // Allow the functions to be used in Node.js for testing purposes
 if (typeof module !== 'undefined') {
     module.exports = { readCookie, saveCookie };
 }
+/* eslint-enable no-undef */
