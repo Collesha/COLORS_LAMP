@@ -183,3 +183,7 @@ function searchColor()
 	}
 	
 }
+// Allow the functions to be used in Node.js for testing purposes
+if (typeof module !== 'undefined') {
+    module.exports = { readCookie, saveCookie };
+}
