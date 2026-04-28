@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-const { readCookie } = require('../public/js/code.js');
+const code = require('../public/js/code.js');
 
 describe('readCookie', () => {
     test('should correctly parse userId from cookie string', () => {
@@ -12,10 +12,12 @@ describe('readCookie', () => {
         });
 
         // Mock window.location to prevent errors during the test
-        delete window.location;
-        window.location = { href: '' };
+        Object.defineProperty(window, 'location', {
+            writable: true,
+            value: { href: '' },
+        });
 
-        readCookie();
+        code.readCookie();
         
         // Check if the logic correctly parsed the ID
         expect(global.userId).toBe(55);
