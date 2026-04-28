@@ -11,14 +11,14 @@ describe('readCookie', () => {
             value: 'firstName=Anna,lastName=Lee,userId=55',
         });
 
-        const locationSpy = jest.spyOn(window, 'location', 'get').mockReturnValue({
-            href: ''
-        });
+        const originalLocation = window.location;
+        delete window.location;
+        window.location = { href: '' };
 
         code.readCookie();
         
         // Check if the logic correctly parsed the ID
         expect(global.userId).toBe(55);
-        locationSpy.mockRestore();
+        window.location = originalLocation;
     });
 });
