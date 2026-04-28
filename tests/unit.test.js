@@ -11,14 +11,13 @@ describe('readCookie', () => {
             value: 'firstName=Anna,lastName=Lee,userId=55',
         });
 
-        const originalLocation = window.location;
+     
         delete window.location;
         window.location = { href: '' };
 
         code.readCookie();
         
         // Check if the logic correctly parsed the ID
-        expect(global.userId).toBe(55);
-        window.location = originalLocation;
+        expect(code.global.userId).toBe(55);
     });
 });
