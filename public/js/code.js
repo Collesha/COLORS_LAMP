@@ -187,6 +187,6 @@ function searchColor()
 /* eslint-disable no-undef */
 // Allow the functions to be used in Node.js for testing purposes
 if (typeof module !== 'undefined') {
-    module.exports = { readCookie, saveCookie };
+    module.exports = { readCookie, saveCookie,userId };
 }
 /* eslint-enable no-undef */
