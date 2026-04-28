@@ -11,11 +11,8 @@ describe('readCookie', () => {
             value: 'firstName=Albus,lastName=Dumbledore,userId=55',
         });
 
-        // Mock window.location to prevent errors during the test
-        Object.defineProperty(window, 'location', {
-            writable: true,
-            value: { href: '' },
-        });
+        delete window.location;
+        window.location = { href: '' };
 
         code.readCookie();
         
