@@ -8,15 +8,17 @@ describe('readCookie', () => {
         // Mock the document.cookie property
         Object.defineProperty(document, 'cookie', {
             writable: true,
-            value: 'firstName=Albus,lastName=Dumbledore,userId=55',
+            value: 'firstName=Anna,lastName=Lee,userId=55',
         });
 
-        delete window.location;
-        window.location = { href: '' };
+        const locationSpy = jest.spyOn(window, 'location', 'get').mockReturnValue({
+            href: ''
+        });
 
         code.readCookie();
         
         // Check if the logic correctly parsed the ID
         expect(global.userId).toBe(55);
+        locationSpy.mockRestore();
     });
 });
