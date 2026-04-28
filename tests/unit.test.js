@@ -18,6 +18,6 @@ describe('readCookie', () => {
         code.readCookie();
         
         // Check if the logic correctly parsed the ID
-        expect(code.global.userId).toBe(55);
+    expect(code.getUserId()).toBe(55);    
     });
 });
